@@ -7,3 +7,8 @@ export 'package:to_do_app/components/default/button.dart';
 export 'package:to_do_app/components/default/input.dart';
 export 'package:to_do_app/config/images.dart';
 export 'package:to_do_app/pages/welcome.dart';
+export 'package:to_do_app/components/default/welcome/step1.dart';
+export 'package:to_do_app/components/default/welcome/step2.dart';
+export 'package:to_do_app/components/default/welcome/step3.dart';
+export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+export 'package:to_do_app/stores/welcome_controller.dart';

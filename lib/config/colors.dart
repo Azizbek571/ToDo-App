@@ -8,4 +8,5 @@ class AppColors {
   static Color bluelight=HexColor.fromHex("#7EBCFB");
   static Color bluedark=HexColor.fromHex("#05425C");
   static Color blue7=HexColor.fromHex("#154FA6");
+  static Color gray6 = Color.fromARGB(202, 127, 127, 127);
 }
