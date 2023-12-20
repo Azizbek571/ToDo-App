@@ -1,6 +1,7 @@
 import 'package:to_do_app/config/imports.dart';
 
 class WelcomeController extends GetxController {
+  
    PageController pageController=PageController(initialPage: 0);
 
   int currentPage = 0;

@@ -10,6 +10,12 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   WelcomeController controller = Get.put(WelcomeController());
 
+  @override
+  void dispose() {
+   controller.pageController.dispose();
+    super.dispose();
+  }
+
 
 
   @override
@@ -30,15 +36,7 @@ class _WelcomeState extends State<Welcome> {
               itemBuilder: (context, index) {
               return controller.pages[index];
              },   ),
-              // PageView(
-              //   scrollDirection: Axis.horizontal,
-              //   controller: controller.pageController,
-              //   children: const [
-              //     Center(child: Text('Page 1')),
-              //     Center(child: Text('Page 2')),
-              //     Center(child: Text('Page 3')),
-              //   ],
-              // ),
+            
               Container(
                   alignment: Alignment(0, 0.8),
                   child: Row(
