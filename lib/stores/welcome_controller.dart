@@ -25,7 +25,7 @@ class WelcomeController extends GetxController {
 
   forward() {
     if (currentPage == 2){
-      Get.off(()=>const Home());
+      Get.off(()=>const MainPage());
       return;
     } 
     pageController.nextPage(
