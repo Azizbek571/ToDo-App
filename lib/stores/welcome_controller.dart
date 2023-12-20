@@ -1,6 +1,14 @@
 import 'package:to_do_app/config/imports.dart';
 
 class WelcomeController extends GetxController {
+
+
+@override
+  void onInit() {
+    GetStorage().write('welcome', true);
+    super.onInit();
+  }
+
   
    PageController pageController=PageController(initialPage: 0);
 

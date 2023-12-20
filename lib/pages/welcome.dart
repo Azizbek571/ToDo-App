@@ -10,6 +10,9 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   WelcomeController controller = Get.put(WelcomeController());
 
+
+
+
   @override
   void dispose() {
    controller.pageController.dispose();

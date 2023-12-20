@@ -1,7 +1,9 @@
 import 'package:to_do_app/config/imports.dart';
-import 'package:to_do_app/pages/splash.dart';
 
-void main() {
+
+
+void main() async{
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

@@ -10,49 +10,45 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
-MainController controller = Get.put(MainController());
-
+  MainController controller = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: GetBuilder<MainController>(
         builder: (controller) {
           return Scaffold(
-          bottomNavigationBar: BottomAppBar(
-            padding: EdgeInsets.zero,
-            height: 100,
-           child: Container(
-            
-            decoration: BoxDecoration(
-              color:AppColors.white,
-              border: Border.all(color:AppColors.blue7),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))
+            bottomNavigationBar: BottomAppBar(
+              padding: EdgeInsets.zero,
+              height: 100,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.white,
+                    border: Border.all(color: AppColors.blue7),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10))),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: List.generate(controller.menus.length, (index) {
+                      var item = controller.menus[index];
+                      return InkWell(
+                          onTap: () {
+                            controller.setWidget(item['page']);
+                          },
+                          child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: SvgPicture.asset(item['icon'],
+                                  width: 25,
+                                  color: controller.activePage(item['page'])
+                                      ? AppColors.blue7
+                                      : AppColors.gray6)));
+                    })),
+              ),
             ),
-            child:  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: 
-
-                
-              List.generate(controller.menus.length, (index){
-                var item = controller.menus[index];
-                return InkWell(
-                  onTap: () {
-                    print('object');
-                  },
-                  child: SvgPicture.asset(item['icon']));
-              
-              })
-              
-               
-           ),
-          
-          ),
-          )
-        );
+            body: controller.currentWidget,
+          );
         },
-        
       ),
     );
   }

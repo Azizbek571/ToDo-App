@@ -14,5 +14,9 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:to_do_app/stores/welcome_controller.dart';
 export 'package:to_do_app/pages/main.dart';
 export 'package:to_do_app/config/icons.dart';
-
+export 'package:to_do_app/pages/calendar.dart';
+export 'package:to_do_app/pages/notification.dart';
+export 'package:to_do_app/pages/profile.dart';
+export 'package:to_do_app/pages/splash.dart';
+export 'package:get_storage/get_storage.dart';
 
