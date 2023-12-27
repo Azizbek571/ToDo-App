@@ -4,4 +4,5 @@ class AppIcons{
   static String add = 'assets/icons/add.svg';
   static String bell = 'assets/icons/bell.svg';
   static String profile = 'assets/icons/profile.svg';
+  static String search = 'assets/icons/search.svg';
 }

@@ -1,21 +1,23 @@
 import 'package:to_do_app/config/imports.dart';
 
 class MainController extends GetxController {
-  Widget currentWidget = const Home();
+  int currentPageId =1;
   List menus = [
-    {"id": 1, "icon": AppIcons.home, "page": Home()},
+    {"id": 1, "icon": AppIcons.home, "page": const Home()},
     {"id": 2, "icon": AppIcons.calendar, "page": const CalendarPage()},
-    {"id": 3, "icon": AppIcons.add, "page":  Container()},
+    {"id": 3, "icon": AppIcons.add, "page": const AddTask()},
     {"id": 4, "icon": AppIcons.bell, "page": const NotificationPage()},
     {"id": 5, "icon": AppIcons.profile, "page": const ProfilePage()},
   ];
-  setWidget(Widget page) {
-    currentWidget = page;
+  setWidget(int id) {
+    currentPageId = id;
     update();
   }
 
-  bool activePage(Widget page){
-   
-    return currentWidget == page;
+currentWidget(){
+  var  index = menus.indexWhere((element) => element['id']== currentPageId);
+  if (index>-1){
+    return menus[index]['page'];
   }
+}
 }

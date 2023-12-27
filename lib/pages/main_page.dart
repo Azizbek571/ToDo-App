@@ -1,4 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:to_do_app/config/imports.dart';
 import 'package:to_do_app/stores/main_controller.dart';
 
@@ -25,7 +24,7 @@ class _MainPageState extends State<MainPage> {
                 decoration: BoxDecoration(
                     color: AppColors.white,
                     border: Border.all(color: AppColors.blue7),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10))),
                 child: Row(
@@ -34,19 +33,19 @@ class _MainPageState extends State<MainPage> {
                       var item = controller.menus[index];
                       return InkWell(
                           onTap: () {
-                            controller.setWidget(item['page']);
+                            controller.setWidget(item['id']);
                           },
                           child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: SvgPicture.asset(item['icon'],
                                   width: 25,
-                                  color: controller.activePage(item['page'])
-                                      ? AppColors.blue7
-                                      : AppColors.gray6)));
+                                  color: item['id']==controller.currentPageId?
+                                  AppColors.blue7: AppColors.gray6
+                                    )));
                     })),
               ),
             ),
-            body: controller.currentWidget,
+            body: controller.currentWidget(),
           );
         },
       ),
