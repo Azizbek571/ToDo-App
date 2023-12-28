@@ -34,6 +34,8 @@ class TaskController extends GetxController {
 
   String startTime = "00:00";
   String endTime = "00:00";
+  String selectedCategory= '';
+
 
   saveTime(bool start, time) {
     if (start) {
@@ -44,5 +46,9 @@ class TaskController extends GetxController {
     }
    update();
     Get.back();
+  }
+  setCategory(String category){
+    selectedCategory=category;
+    update();  
   }
 }

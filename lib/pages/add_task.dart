@@ -81,7 +81,8 @@ class _AddTaskState extends State<AddTask> {
                               time: controller.startTime,
                               onTap: () {
                                 Get.dialog(
-                                  ChooseTimeDialog(controller:controller, start:true),
+                                  ChooseTimeDialog(
+                                      controller: controller, start: true),
                                 );
                               },
                             ),
@@ -90,8 +91,9 @@ class _AddTaskState extends State<AddTask> {
                               label: "End Time",
                               time: controller.endTime,
                               onTap: () {
-                             Get.dialog(
-                                  ChooseTimeDialog(controller:controller, start:false),
+                                Get.dialog(
+                                  ChooseTimeDialog(
+                                      controller: controller, start: false),
                                 );
                               },
                             ),
@@ -132,14 +134,16 @@ class _AddTaskState extends State<AddTask> {
                             var item = controller.categories[index];
                             return InkWell(
                               onTap: () {
-                                print('object');
+                                controller.setCategory(item);
                               },
                               child: Container(
                                 width: 100,
                                 padding: EdgeInsetsDirectional.symmetric(
                                     horizontal: 23, vertical: 10),
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color:
+                                    item==controller.selectedCategory?AppColors.blue7:
+                                     Colors.white,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   item,
@@ -148,7 +152,7 @@ class _AddTaskState extends State<AddTask> {
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700,
-                                      color: AppColors.blue7),
+                                      color:item==controller.selectedCategory?AppColors.white: AppColors.blue7),
                                 ),
                               ),
                             );
@@ -168,8 +172,6 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 }
-
-
 
 class TaskTimeComponent extends StatelessWidget {
   TaskTimeComponent({
