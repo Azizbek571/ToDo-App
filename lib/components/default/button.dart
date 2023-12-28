@@ -3,10 +3,12 @@ import 'package:to_do_app/config/imports.dart';
 class Button extends StatelessWidget {
  String text;
  Function? onTap;
+ bool dense;
    Button({
     super.key,
      this.onTap,
-     this.text = "Text"
+     this.text = "Text",
+     this.dense =false,
     
   });
 
@@ -21,16 +23,16 @@ class Button extends StatelessWidget {
       child: Container(
           width: double.maxFinite,
           padding:
-              const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+             EdgeInsets.symmetric(vertical: dense?10: 18,horizontal:dense? 10 : 20),
           decoration: BoxDecoration(
               color: AppColors.primary,
-              borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.circular(dense?14:20)),
           child: Text(
             text,
             style: TextStyle(
                 color: AppColors.white,
                 fontWeight: FontWeight.w700,
-                fontSize: 20),
+                fontSize: dense?18:20),
             textAlign: TextAlign.center,
           )),
     );

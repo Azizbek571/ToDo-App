@@ -21,6 +21,10 @@ export 'package:to_do_app/pages/splash.dart';
 export 'package:get_storage/get_storage.dart';
 export 'package:to_do_app/pages/add_task.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:to_do_app/stores/task_controller.dart';
+export 'package:to_do_app/components/default/add-task/choose_time_dialog.dart';
+
+
 
 
 

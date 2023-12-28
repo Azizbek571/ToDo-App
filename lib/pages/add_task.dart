@@ -1,5 +1,4 @@
 import 'package:to_do_app/config/imports.dart';
-import 'package:to_do_app/stores/task_controller.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({super.key});
@@ -33,8 +32,8 @@ class _AddTaskState extends State<AddTask> {
                     SvgPicture.asset(AppIcons.search)
                   ]),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 30),
                     child: const TextField(
                       cursorColor: Color.fromARGB(255, 30, 118, 189),
                       style: TextStyle(
@@ -62,8 +61,8 @@ class _AddTaskState extends State<AddTask> {
                   ),
                   const SizedBox(height: 50),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 15),
                     decoration: BoxDecoration(
                         borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(15),
@@ -75,10 +74,30 @@ class _AddTaskState extends State<AddTask> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                      
-
-
-
+                        Row(
+                          children: [
+                            TaskTimeComponent(
+                              label: "Start Time",
+                              time: controller.startTime,
+                              onTap: () {
+                                Get.dialog(
+                                  ChooseTimeDialog(controller:controller, start:true),
+                                );
+                              },
+                            ),
+                            SizedBox(width: 100),
+                            TaskTimeComponent(
+                              label: "End Time",
+                              time: controller.endTime,
+                              onTap: () {
+                             Get.dialog(
+                                  ChooseTimeDialog(controller:controller, start:false),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                        Divider(color: AppColors.white, thickness: 2),
                         const TextField(
                           maxLines: 3,
                           cursorColor: Colors.white,
@@ -95,18 +114,18 @@ class _AddTaskState extends State<AddTask> {
                                   color: Colors.white),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.white, width: 2.0)),
+                                borderSide: BorderSide(
+                                    color: Colors.white, width: 2.0)),
                             focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.white, width: 2.0)),
+                                borderSide: BorderSide(
+                                    color: Colors.white, width: 2.0)),
                           ),
                         ),
                         SizedBox(height: 15),
                         Text("Category", style: TextStyle(color: Colors.white)),
                         SizedBox(height: 15),
                         Wrap(
-                          spacing:20,
+                          spacing: 20,
                           runSpacing: 15,
                           children: List.generate(controller.categories.length,
                               (index) {
@@ -116,7 +135,7 @@ class _AddTaskState extends State<AddTask> {
                                 print('object');
                               },
                               child: Container(
-                                width:100,
+                                width: 100,
                                 padding: EdgeInsetsDirectional.symmetric(
                                     horizontal: 23, vertical: 10),
                                 decoration: BoxDecoration(
@@ -136,9 +155,7 @@ class _AddTaskState extends State<AddTask> {
                           }),
                         ),
                         const SizedBox(height: 15),
-                        Button(onTap:(){
-            
-                        }  )
+                        Button(onTap: () {})
                       ],
                     ),
                   ),
@@ -148,6 +165,46 @@ class _AddTaskState extends State<AddTask> {
           ],
         );
       },
+    );
+  }
+}
+
+
+
+class TaskTimeComponent extends StatelessWidget {
+  TaskTimeComponent({
+    super.key,
+    required this.label,
+    required this.time,
+    required this.onTap,
+  });
+
+  String label, time;
+  Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        onTap();
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label,
+              style: TextStyle(
+                  color: AppColors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16)),
+          Text(
+            time,
+            style: TextStyle(
+                color: AppColors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 20),
+          )
+        ],
+      ),
     );
   }
 }
