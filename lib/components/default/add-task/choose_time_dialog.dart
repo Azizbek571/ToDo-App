@@ -33,8 +33,8 @@ class _ChooseTimeDialogState extends State<ChooseTimeDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        shape: RoundedRectangleBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(10.0))),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
         actions: [
           Button(
               onTap: () {
@@ -55,7 +55,7 @@ class _ChooseTimeDialogState extends State<ChooseTimeDialog> {
                 setHour(item);
               },
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             TimeSection(
               section: minute,
               label: "Choose the minute",
@@ -102,7 +102,7 @@ class TimeSection extends StatelessWidget {
                 child: Container(
                     padding:
                         const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
-                    margin: EdgeInsets.only(right: 5),
+                    margin: const EdgeInsets.only(right: 5),
                     decoration: BoxDecoration(
                         color: item == section ? AppColors.blue7 : null,
                         border: Border.all(color: AppColors.blue7),

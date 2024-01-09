@@ -86,7 +86,7 @@ class _AddTaskState extends State<AddTask> {
                                 );
                               },
                             ),
-                            SizedBox(width: 100),
+                            const SizedBox(width: 100),
                             TaskTimeComponent(
                               label: "End Time",
                               time: controller.endTime,
@@ -123,9 +123,9 @@ class _AddTaskState extends State<AddTask> {
                                     color: Colors.white, width: 2.0)),
                           ),
                         ),
-                        SizedBox(height: 15),
-                        Text("Category", style: TextStyle(color: Colors.white)),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
+                        const Text("Category", style: TextStyle(color: Colors.white)),
+                        const SizedBox(height: 15),
                         Wrap(
                           spacing: 20,
                           runSpacing: 15,
@@ -138,7 +138,7 @@ class _AddTaskState extends State<AddTask> {
                               },
                               child: Container(
                                 width: 100,
-                                padding: EdgeInsetsDirectional.symmetric(
+                                padding: const EdgeInsetsDirectional.symmetric(
                                     horizontal: 23, vertical: 10),
                                 decoration: BoxDecoration(
                                     color:

@@ -1,9 +1,12 @@
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:to_do_app/config/imports.dart';
 
 
 
-void main() async{
+Future main() async{
   await GetStorage.init();
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
   runApp(const MyApp());
 }
 
