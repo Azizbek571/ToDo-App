@@ -24,6 +24,14 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:to_do_app/stores/task_controller.dart';
 export 'package:to_do_app/components/default/add-task/choose_time_dialog.dart';
 export 'package:to_do_app/config/database.dart';
+export 'package:sqflite_common_ffi/sqflite_ffi.dart';
+export 'package:to_do_app/config/Themes.dart';
+export 'package:to_do_app/config/ThemeService.dart';
+export 'package:to_do_app/stores/category_con.dart';
+export 'package:to_do_app/models/category_model.dart';
+
+
+
 
 
 

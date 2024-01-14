@@ -11,6 +11,13 @@ class _AddTaskState extends State<AddTask> {
   TaskController controller = Get.put(TaskController());
 
   @override
+  void initState() {
+    controller.getCategories();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<TaskController>(
       builder: (controller) {
@@ -21,6 +28,7 @@ class _AddTaskState extends State<AddTask> {
             SingleChildScrollView(
               child: Column(
                 children: [
+                  const SizedBox(height: 15),
                   Row(children: [
                     const Spacer(),
                     Text('Create a Task',
@@ -29,7 +37,12 @@ class _AddTaskState extends State<AddTask> {
                             fontWeight: FontWeight.w600,
                             fontSize: 18)),
                     const Spacer(),
-                    SvgPicture.asset(AppIcons.search)
+                    SvgPicture.asset(AppIcons.search),
+                    const SizedBox(width: 8),
+                    IconButton(onPressed:(){
+                      ThemeService().switchTheme();
+                    }, icon: Icon(Icons.light_mode_outlined)),
+                    const SizedBox(width: 15)
                   ]),
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -126,6 +139,9 @@ class _AddTaskState extends State<AddTask> {
                         const SizedBox(height: 15),
                         const Text("Category", style: TextStyle(color: Colors.white)),
                         const SizedBox(height: 15),
+
+                      controller.loading ? Center(child: CircularProgressIndicator()) :
+
                         Wrap(
                           spacing: 20,
                           runSpacing: 15,
@@ -134,7 +150,7 @@ class _AddTaskState extends State<AddTask> {
                             var item = controller.categories[index];
                             return InkWell(
                               onTap: () {
-                                controller.setCategory(item);
+                                controller.setCategory(item.title);
                               },
                               child: Container(
                                 width: 100,
@@ -142,17 +158,17 @@ class _AddTaskState extends State<AddTask> {
                                     horizontal: 23, vertical: 10),
                                 decoration: BoxDecoration(
                                     color:
-                                    item==controller.selectedCategory?AppColors.blue7:
+                                    item.title == controller.selectedCategory?AppColors.blue5:
                                      Colors.white,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
-                                  item,
+                                  item.title,
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700,
-                                      color:item==controller.selectedCategory?AppColors.white: AppColors.blue7),
+                                      color:item.title==controller.selectedCategory?AppColors.white: AppColors.blue7),
                                 ),
                               ),
                             );

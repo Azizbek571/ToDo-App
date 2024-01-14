@@ -1,15 +1,8 @@
 import 'package:to_do_app/config/imports.dart';
 
 class TaskController extends GetxController {
-  List<String> categories = [
-    "Books",
-    "Meeting",
-    "Sport",
-    "Films",
-    "Money",
-    "Coding",
-    "Going out",
-  ];
+ bool loading = false;
+ MyDb mydb = MyDb();
 
   List<String> hours = [];
   List<String> minutes = [];
@@ -51,4 +44,18 @@ class TaskController extends GetxController {
     selectedCategory=category;
     update();  
   }
+
+    List<CategoryModel> categories = [];
+
+  Future getCategories()async{
+    loading=true;
+    update();
+    await mydb.open();
+    Future.delayed(const Duration(seconds:1),()async{
+    var res = await mydb.db!.rawQuery('SELECT * FROM category ORDER BY id DESC');
+    categories = categoryFromJson(res.toList());
+    loading= false;
+    update();
+    });
+ }
 }

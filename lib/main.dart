@@ -1,7 +1,4 @@
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:to_do_app/config/imports.dart';
-
-
 
 Future main() async{
   await GetStorage.init();
@@ -19,11 +16,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: SafeArea(child:  Splash()),
+      darkTheme: Themes.dark,
+      theme: Themes.light,
+      themeMode: ThemeService().theme,
+      home: const SafeArea(child:  Splash()),
     );
   }
 }
