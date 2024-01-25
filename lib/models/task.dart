@@ -29,5 +29,5 @@ class TaskModel{
 }
 
 List<TaskModel> taskListFromJson(List list){
-  return List<TaskModel>.from(list.map((item) => null))
+  return List<TaskModel>.from(list.map((item) => TaskModel.fromJson(item)));
 }
