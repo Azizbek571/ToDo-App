@@ -25,6 +25,7 @@ class _AddTaskState extends State<AddTask> {
           children: [
             const Positioned(top: -100, child: CircleContainer()),
             const Positioned(top: -30, left: -60, child: CircleContainer()),
+            // controller.loading?const CircularProgressIndicator():
             SingleChildScrollView(
               child: Column(
                 children: [
@@ -47,8 +48,9 @@ class _AddTaskState extends State<AddTask> {
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 25, vertical: 30),
-                    child: const TextField(
+                    child:   TextField(
                       cursorColor: Color.fromARGB(255, 30, 118, 189),
+                      controller: controller.title,
                       style: TextStyle(
                           color: Color.fromARGB(255, 9, 66, 112),
                           fontWeight: FontWeight.w800,
@@ -74,6 +76,7 @@ class _AddTaskState extends State<AddTask> {
                   ),
                   const SizedBox(height: 50),
                   Container(
+                    height:500 ,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 25, vertical: 15),
                     decoration: BoxDecoration(
@@ -113,8 +116,9 @@ class _AddTaskState extends State<AddTask> {
                           ],
                         ),
                         Divider(color: AppColors.white, thickness: 2),
-                        const TextField(
+                          TextField(
                           maxLines: 3,
+                          controller: controller.description,
                           cursorColor: Colors.white,
                           style: TextStyle(
                               color: Colors.white,
@@ -175,7 +179,9 @@ class _AddTaskState extends State<AddTask> {
                           }),
                         ),
                         const SizedBox(height: 15),
-                        Button(onTap: () {})
+                        Button(onTap: () {
+                          controller.addTask();
+                        }, text: "Add",)
                       ],
                     ),
                   ),
