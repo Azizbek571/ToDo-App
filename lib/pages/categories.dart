@@ -98,7 +98,7 @@ class CategoryItem extends StatelessWidget {
               const Spacer(),
               PopupMenuButton(
                 icon: const Icon(Icons.more_vert_outlined),
-                color: Colors.white,
+                color: Colors.black,
                 itemBuilder: (context) => [
                    PopupMenuItem(
                     value: 1,

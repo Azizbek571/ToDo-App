@@ -1,11 +1,13 @@
 import 'package:to_do_app/config/imports.dart';
-import 'package:to_do_app/models/task.dart';
 
 class HomeController extends GetxController{
   bool loading=false;
   MyDb mydb = MyDb();
 
   List<TaskModel> tasks = [];
+
+
+
   Future<void> fetchTasks()async{
     try{
       loading=true;
@@ -24,5 +26,23 @@ class HomeController extends GetxController{
       print(err);
     }
   }
+
+  List<int> selectedTask = [];
+
+  bool isHaveTaskId(int id){
+    return selectedTask.indexWhere((element) => element == id) > -1;
+  }
+  
+  void addorRemoveTaskId(int id){
+   var  index = selectedTask.indexWhere((element) => element == id);
+   if(index> -1){
+    selectedTask.removeAt(index);
+   }else{
+  selectedTask.add(id);
+   }
+   update();
+  }
+
+  
 
 }

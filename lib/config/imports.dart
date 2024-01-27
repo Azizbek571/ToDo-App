@@ -29,6 +29,10 @@ export 'package:to_do_app/config/Themes.dart';
 export 'package:to_do_app/config/ThemeService.dart';
 export 'package:to_do_app/stores/category_con.dart';
 export 'package:to_do_app/models/category_model.dart';
+export 'package:to_do_app/models/task.dart';
+export 'package:to_do_app/components/home/task_card.dart';
+export 'package:to_do_app/stores/home_controller.dart';
+
 
 
 
