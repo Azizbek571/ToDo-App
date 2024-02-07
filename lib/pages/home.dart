@@ -1,3 +1,4 @@
+import 'package:to_do_app/components/default/confirm_dilaog.dart';
 import 'package:to_do_app/config/imports.dart';
 
 class Home extends StatefulWidget {
@@ -39,14 +40,33 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.w600,
                                   color: AppColors.blue7),
                             ),
+                            const Spacer(),
+                            controller.selectedTask.isEmpty ? Container() :
                             Row(
                               children: [
-                                IconButton(onPressed: (){}, icon: Icon(Icons.check_rounded))
+                                IconButton(onPressed: (){
+                                  Get.dialog(ConfirmDialog(text:"Are you sure you have done this task?",
+                                   title: "Attention",
+                                    onTap: (){
+                                  controller.changeStatus("Done");
+                                    }));
+                                }, icon: Icon(Icons.check_rounded, color: Colors.green)),
+                                IconButton(
+                                  onPressed: () {
+                                    Get.dialog(ConfirmDialog(text: "Are you sure you want to delete the task?",
+                                     title: "Attention",
+                                      onTap: (){
+                                        controller.changeStatus("Deleted");
+                                      }));
+                                  },
+                                  icon: const Icon(Icons.delete, color: Colors.red),
+                                )
                               ],
                             )
                           ],
                         ),
                         const SizedBox(height: 16),
+                        controller.tasks.isEmpty?Text("No list of tasks"):
                         Column(
                             children:
                                 List.generate(controller.tasks.length, (index) {
